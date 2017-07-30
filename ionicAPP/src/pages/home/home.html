@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Find where you are in Campus!</h2>
+  <ion-card-content>
+    <ion-input placeholder="Latitude" [(ngModel)]="Latitude"></ion-input>
+    <ion-input placeholder="Longitude" [(ngModel)]="Longitude"></ion-input>
+    <!-- <ion-list>
+      <ion-item>
+      </ion-item>
+
+      <ion-item>
+      </ion-item>
+    </ion-list> -->
+    <button ion-button (click)="getPos()">Get Position</button>
+    <p>or</p>
+    <button ion-button (click)="watch()">Use Gps</button>
+
+    <p style="color: orange;">{{ error }}</p>
+    <p><strong>Position:</strong> {{lat}}, {{long}}</p>
+    <!-- <p *ngif="error">{{ error }}</p> -->
+  </ion-card-content>
+  <ion-scroll scrollX="true" style="height: 500px; width: 500px; overflow: scroll;white-space: nowrap;">
+    <div style="width:500px; height:500px; position:absolute; z-index:0;">
+      <img src="assets/img/iitgmap.png" alt="Map not available">
+      <img src="assets/img/pin.png" alt="Pin not available" height="50px" style=" z-index: 1; position: absolute;" [style.top]="top" [style.left]="left" *ngIf="!pinHidden">
+    </div>
+  </ion-scroll>
+</ion-content>
